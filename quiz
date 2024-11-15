@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAS Restaurant</title>
+    <style>
+        /* Internal CSS */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #35a7f9; /* Warna latar belakang header */
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        header img {
+            width: 50px; /* Ukuran logo */
+            height: auto;
+            margin-right: 15px;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: white;
+        }
+        nav a:hover {
+            color: #ffd700;
+        }
+        main {
+            padding: 20px;
+        }
+       
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 15px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: left;
+        }
+        footer h3 {
+            margin-top: 0;
+        }
+        footer p, footer form {
+            margin: 10px 0;
+        }
+        footer form label {
+            display: block;
+            margin: 5px 0;
+        }
+        footer form input[type="text"], 
+        footer form input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        footer form input[type="radio"], 
+        footer form input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        footer form input[type="submit"] {
+            background-color: #ff6347;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        footer form input[type="submit"]:hover {
+            background-color: #ff4500;
+        }
+        footer div.social-icons {
+            margin-top: 15px;
+        }
+        footer div.social-icons a img {
+            margin: 0 10px;
+        }
+        iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <img src="data:image/jpeg;base64,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" alt="Logo Restoran"> <!-- Ganti "logo.png" dengan path logo Anda -->
+        <h1>Lamun Ombak</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#menu">Menu</a>
+            <a href="#about">About Us</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Konten Utama -->
+    <main>
+        <section id="home">
+            <h2>Selamat Datang di Lamun Ombak</h2>
+            <i>Restoran ini menawarkan hidangan spesial yang terbuat dari bahan-bahan segar dan berkualitas. Kami berkomitmen untuk memberikan pengalaman kuliner terbaik kepada setiap pelanggan.</1>
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiz2rNrF9Ixeh3tpomOP5s4JrQpE33L3nod9iU-8ZwDW7fTZ4mqgCFJ1-QCZQ2f8A42SEAKuCNmrvjCivsK95PP2cZzdK6OBmrIQBrUbRFbWvGw9lhTK5V-JFnEzn8UJFztp-Cey0wXZcj7A3hiQRtP7PBKFQ4WPmtVU-rLjAhrgSOAWestP2igDeIxoSc/s1743/D875E876-23F3-41A5-8DB0-ED0650DD4E96.jpeg" alt="Gambar Restoran" style="display: block; margin: 0 auto;">
+        </section>
+
+        <section id="menu">
+            <h2>Menu</h2>
+            <!-- Tabel Menu -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Gambar</th>
+                        <th>Nama Makanan</th>
+                        <th>Harga</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="https://image.popmama.com/content-images/post/20231031/Resep%20Ayam%20Pop-2F9ge17EA0B1jgludtynWj5HEd9PQ8Tq.jpg?width=1200&height=800" alt="Ayam Pop" width="100"></td>
+                        <td>Ayam Pop</td>
+                        <td>Rp25.000</td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/3ef86e1c-16e7-4ac5-b060-20c854fb4f2e_IMG_20201007_132727_990.jpg" alt="Udang Kelong" width="100"></td>
+                        <td>Udang Kelong</td>
+                        <td>Rp112.000</td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://silamparitv.disway.id/upload/8c2094f0fa4c66ffac93f18d0406d4b7.jpg" alt="Gulai Tunjang" width="100"></td>
+                        <td>Gulai Tunjang</td>
+                        <td>Rp35.000</td>
+                    </tr>
+                   
+                    <tr>
+                </tbody>
+            </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Gambar</th>
+                        <th>Nama Minuman</th>
+                        <th>Harga</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   
+                    <tr>
+                        <td><img src="https://assets.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/2023/05/15/fce36ffa132f655d945a46d22443babb-1937665417.jpg" alt="Es Teler" width="100"></td>
+                        <td>Es Teler</td>
+                        <td>Rp29.000</td>
+                    </tr>
+                    <td><img src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/0e7c2a79-c027-444c-90fe-d405c4d366d0_Go-Biz_20211014_154259.jpeg" alt="Es Lamun Ombak" width="100"></td>
+                        <td>Es Lamun Ombak</td>
+                        <td>Rp29.000</td>
+                    </tr>
+                    <tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="testimonials">
+            <h2>Testimoni Pelanggan</h2>
+            <ol>
+                <li>"Makanan di sini luar biasa, pelayanan cepat dan ramah!" – Ahda</li>
+                <li>"Tempat yang sempurna untuk makan bersama keluarga." – dinoy</li>
+            </ol>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <h3>Kontak Kami</h3>
+        <p>Alamat: Jl. Khatib Sulaiman No. 99, Kota Padang</p>
+        <p>Telepon: 0813-7453-3335 | Email: lamunombak@gmail.com</p>
+        
+        <!-- Formulir Reservasi -->
+        <h3>Formulir Reservasi</h3>
+        <form>
+            <label for="name">Nama:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="date">Tanggal Reservasi:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label>Jumlah Tamu:</label>
+            <input type="radio" id="2pax" name="guests" value="2" required> 2 Orang<br>
+            <input type="radio" id="4pax" name="guests" value="4"> 4 Orang<br>
+            <input type="radio" id="morepax" name="guests" value="more"> Lebih dari 4 Orang<br><br>
+
+            <input type="checkbox" id="terms" name="terms" required> Saya setuju dengan syarat dan ketentuan<br><br>
+
+            <input type="submit" value="Kirim">
+        </form>
+
+        <!-- Tautan Media Sosial -->
+        <div class="social-icons">
+            <h3>Ikuti Kami di Media Sosial</h3>
+            <a href="https://www.facebook.com/p/RM-Lamun-Ombak-Khatib-Sulaiman-100054240171895/?locale=id_ID" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" width="30" height="30">
+            </a>
+            <a href="https://www.instagram.com/LamunOmbak" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/480px-Instagram_logo_2022.svg.png" width="30" height="30">
+            </a>
+            <a href="https://twitter.com/LamunOmbak" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/1245px-Logo_of_Twitter.svg.png" width="30" height="30">
+            </a>
+        </div>
+
+        <!-- Google Maps Iframe -->
+        <h3>Lokasi Kami</h3>
+       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127662.49944480314!2d100.22988080978394!3d-0.7752420379916293!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd4b90b8d6e7df5%3A0xf20fc6f22d8f2fc4!2sRM%20Lamun%20Ombak!5e0!3m2!1sid!2sid!4v1731658027944!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </footer>
+
+</body>
+</html>
